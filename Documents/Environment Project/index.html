@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Environmental Awareness &amp; Carbon Footprint Calculator</title>
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Chart.js (used only for the emissions bar chart) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===================== NAVIGATION BAR ===================== -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo">
+        <i class="fa-solid fa-leaf"></i>
+        <span>EcoTrack</span>
+      </a>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#hero" class="active">Home</a>
+        <a href="#about">About</a>
+        <a href="#calculator">Calculator</a>
+        <a href="#awareness">Awareness</a>
+        <a href="#stats">Statistics</a>
+      </nav>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===================== HERO SECTION ===================== -->
+  <section class="hero" id="hero">
+    <div class="hero-container fade-in">
+      <div class="hero-text">
+        <p class="hero-eyebrow"><i class="fa-solid fa-earth-americas"></i> Small choices, real impact</p>
+        <h1>Environmental Awareness &amp; Carbon Footprint Calculator</h1>
+        <p class="hero-subtitle">Know your environmental impact and help protect our planet.</p>
+        <a href="#calculator" class="btn btn-primary" id="calculateNowBtn">
+          Calculate Now <i class="fa-solid fa-arrow-down"></i>
+        </a>
+      </div>
+
+      <div class="hero-illustration">
+        <!-- Simple, original Earth illustration built with inline SVG -->
+        <svg viewBox="0 0 400 400" class="earth-svg" role="img" aria-label="Illustration of planet Earth surrounded by leaves">
+          <circle cx="200" cy="200" r="120" fill="#66BB6A" />
+          <circle cx="200" cy="200" r="120" fill="url(#oceanGradient)" />
+          <path d="M120 140 Q160 120 190 150 Q210 170 180 190 Q150 210 130 190 Q110 170 120 140 Z" fill="#2E7D32" opacity="0.85"/>
+          <path d="M230 210 Q270 200 290 230 Q300 260 270 270 Q240 275 225 250 Q215 230 230 210 Z" fill="#2E7D32" opacity="0.85"/>
+          <path d="M150 250 Q180 245 195 270 Q200 290 175 295 Q155 297 145 278 Q140 262 150 250 Z" fill="#2E7D32" opacity="0.85"/>
+          <circle cx="200" cy="200" r="120" fill="none" stroke="#1B5E20" stroke-width="3" opacity="0.3"/>
+          <g class="leaf-orbit">
+            <path d="M200 40 C215 55 215 75 200 90 C185 75 185 55 200 40 Z" fill="#2E7D32"/>
+          </g>
+          <g class="leaf-orbit leaf-orbit-2">
+            <path d="M340 200 C325 215 305 215 290 200 C305 185 325 185 340 200 Z" fill="#66BB6A"/>
+          </g>
+          <g class="leaf-orbit leaf-orbit-3">
+            <path d="M200 360 C185 345 185 325 200 310 C215 325 215 345 200 360 Z" fill="#2E7D32"/>
+          </g>
+          <defs>
+            <radialGradient id="oceanGradient" cx="35%" cy="35%" r="70%">
+              <stop offset="0%" stop-color="#8fdf94"/>
+              <stop offset="100%" stop-color="#4CAF50"/>
+            </radialGradient>
+          </defs>
+        </svg>
+      </div>
+    </div>
+    <a href="#about" class="scroll-cue" aria-label="Scroll to About section">
+      <i class="fa-solid fa-chevron-down"></i>
+    </a>
+  </section>
+
+  <!-- ===================== ABOUT SECTION ===================== -->
+  <section class="about" id="about">
+    <div class="section-container">
+      <p class="section-eyebrow">Understand the basics</p>
+      <h2 class="section-title">What is a Carbon Footprint?</h2>
+      <p class="section-text fade-in">
+        A carbon footprint is the total amount of greenhouse gases &mdash; mainly carbon dioxide (CO&#8322;) &mdash;
+        produced directly or indirectly by our everyday actions. Every time we travel, switch on a light,
+        eat a meal, or use a plastic bag, we add a little more carbon to the atmosphere. Understanding this
+        number helps us make smarter, greener choices that protect our planet for future generations.
+      </p>
+
+      <div class="about-grid">
+        <div class="about-card fade-in">
+          <div class="about-icon"><i class="fa-solid fa-car"></i></div>
+          <h3>Transportation</h3>
+          <p>Fuel-powered vehicles release CO&#8322; with every kilometer travelled.</p>
+        </div>
+        <div class="about-card fade-in">
+          <div class="about-icon"><i class="fa-solid fa-bolt"></i></div>
+          <h3>Electricity</h3>
+          <p>Most power grids still rely on fossil fuels to generate electricity.</p>
+        </div>
+        <div class="about-card fade-in">
+          <div class="about-icon"><i class="fa-solid fa-utensils"></i></div>
+          <h3>Food</h3>
+          <p>Meat production generates far more emissions than plant-based food.</p>
+        </div>
+        <div class="about-card fade-in">
+          <div class="about-icon"><i class="fa-solid fa-bottle-water"></i></div>
+          <h3>Plastic Waste</h3>
+          <p>Plastic production and disposal both release harmful greenhouse gases.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CALCULATOR SECTION ===================== -->
+  <section class="calculator" id="calculator">
+    <div class="section-container">
+      <p class="section-eyebrow">Your daily impact</p>
+      <h2 class="section-title">Carbon Footprint Calculator</h2>
+      <p class="section-text">Fill in your daily habits below and see your estimated CO&#8322; output.</p>
+
+      <div class="calculator-card fade-in">
+        <form id="calculatorForm" novalidate>
+          <div class="form-grid">
+
+            <div class="form-group">
+              <label for="distance"><i class="fa-solid fa-road"></i> Distance travelled per day (km)</label>
+              <input type="number" id="distance" name="distance" min="0" step="0.1" placeholder="e.g. 12" />
+              <span class="error-message" id="distanceError"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="electricity"><i class="fa-solid fa-plug"></i> Electricity consumed per day (units)</label>
+              <input type="number" id="electricity" name="electricity" min="0" step="0.1" placeholder="e.g. 8" />
+              <span class="error-message" id="electricityError"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="food"><i class="fa-solid fa-bowl-food"></i> Food Preference</label>
+              <select id="food" name="food">
+                <option value="" disabled selected>Select an option</option>
+                <option value="veg">Vegetarian</option>
+                <option value="nonveg">Non Vegetarian</option>
+              </select>
+              <span class="error-message" id="foodError"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="plastic"><i class="fa-solid fa-recycle"></i> Plastic Usage</label>
+              <select id="plastic" name="plastic">
+                <option value="" disabled selected>Select an option</option>
+                <option value="none">No Plastic</option>
+                <option value="low">1–3 Plastic Items</option>
+                <option value="high">More than 3 Plastic Items</option>
+              </select>
+              <span class="error-message" id="plasticError"></span>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary" id="calculateBtn">
+              <i class="fa-solid fa-calculator"></i> Calculate Carbon Footprint
+            </button>
+            <button type="button" class="btn btn-secondary" id="resetBtn">
+              <i class="fa-solid fa-rotate-left"></i> Reset
+            </button>
+          </div>
+        </form>
+
+        <!-- Loading Spinner -->
+        <div class="loader" id="loader">
+          <div class="spinner"></div>
+          <p>Calculating your impact...</p>
+        </div>
+
+        <!-- ===================== RESULT SECTION ===================== -->
+        <div class="result-section" id="resultSection">
+          <h3>Your Carbon Footprint</h3>
+          <div class="result-value-wrap">
+            <span class="result-value" id="resultValue">0.00</span>
+            <span class="result-unit">kg CO&#8322;/day</span>
+          </div>
+
+          <div class="result-badge" id="resultBadge">
+            <i class="fa-solid fa-seedling"></i>
+            <span id="resultLabel">Excellent</span>
+          </div>
+
+          <div class="progress-wrap">
+            <div class="progress-labels">
+              <span>0</span>
+              <span>10</span>
+              <span>20</span>
+              <span>30+</span>
+            </div>
+            <div class="progress-bar-track">
+              <div class="progress-bar-fill" id="progressBarFill"></div>
+            </div>
+          </div>
+
+          <div class="breakdown-grid" id="breakdownGrid">
+            <div class="breakdown-item">
+              <i class="fa-solid fa-car"></i>
+              <span class="breakdown-label">Transport</span>
+              <span class="breakdown-value" id="transportValue">0.00</span>
+            </div>
+            <div class="breakdown-item">
+              <i class="fa-solid fa-bolt"></i>
+              <span class="breakdown-label">Electricity</span>
+              <span class="breakdown-value" id="electricityValue">0.00</span>
+            </div>
+            <div class="breakdown-item">
+              <i class="fa-solid fa-bowl-food"></i>
+              <span class="breakdown-label">Food</span>
+              <span class="breakdown-value" id="foodValue">0.00</span>
+            </div>
+            <div class="breakdown-item">
+              <i class="fa-solid fa-bottle-water"></i>
+              <span class="breakdown-label">Plastic</span>
+              <span class="breakdown-value" id="plasticValue">0.00</span>
+            </div>
+          </div>
+
+          <!-- ===================== SUGGESTIONS SECTION ===================== -->
+          <div class="suggestions" id="suggestions">
+            <h4 id="suggestionsTitle"><i class="fa-solid fa-lightbulb"></i> Suggestions</h4>
+            <ul id="suggestionsList"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ENVIRONMENTAL AWARENESS SECTION ===================== -->
+  <section class="awareness" id="awareness">
+    <div class="section-container">
+      <p class="section-eyebrow">Do your part</p>
+      <h2 class="section-title">Small Habits, Big Difference</h2>
+
+      <div class="awareness-grid">
+        <div class="awareness-card fade-in">
+          <div class="awareness-icon"><i class="fa-solid fa-ban"></i></div>
+          <h3>Reduce Plastic</h3>
+          <p>Carry a reusable bag and bottle to cut down single-use plastic waste every day.</p>
+        </div>
+        <div class="awareness-card fade-in">
+          <div class="awareness-icon"><i class="fa-solid fa-lightbulb"></i></div>
+          <h3>Save Electricity</h3>
+          <p>Switch off appliances when not in use and choose energy-efficient LED lighting.</p>
+        </div>
+        <div class="awareness-card fade-in">
+          <div class="awareness-icon"><i class="fa-solid fa-bicycle"></i></div>
+          <h3>Ride Bicycle</h3>
+          <p>Choose a bicycle or walk for short trips instead of using a fuel-powered vehicle.</p>
+        </div>
+        <div class="awareness-card fade-in">
+          <div class="awareness-icon"><i class="fa-solid fa-tree"></i></div>
+          <h3>Plant Trees</h3>
+          <p>Trees absorb CO&#8322; naturally &mdash; planting even one makes a lasting impact.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== STATISTICS SECTION ===================== -->
+  <section class="stats" id="stats">
+    <div class="section-container">
+      <p class="section-eyebrow">Visual breakdown</p>
+      <h2 class="section-title">Your Emissions by Category</h2>
+      <p class="section-text">Calculate your footprint above to see your personalized chart.</p>
+
+      <div class="chart-card fade-in">
+        <canvas id="emissionsChart" height="280"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <i class="fa-solid fa-leaf"></i>
+        <span>Environmental Awareness &amp; Carbon Footprint Calculator</span>
+      </div>
+      <p>Developed by Kokila as a B.Sc Computer Science Final Year Project</p>
+      <p class="footer-copy">&copy; <span id="currentYear"></span> EcoTrack. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Scroll to Top Button -->
+  <button id="scrollTopBtn" aria-label="Scroll to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>
